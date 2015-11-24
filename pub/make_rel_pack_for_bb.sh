@@ -4,7 +4,9 @@ echo $TAR_NAME
 echo "make release package for edison image bitbake project ..."
 rm -rf $TAR_NAME
 
-SERVICE=../nodered.service
+mkdir SmartNode
+
+SERVICE=./SmartNode/nodered.service
 rm -rf $SERVICE
 echo "[Unit]" > $SERVICE
 echo "Description=Node-RED" >> $SERVICE
@@ -18,9 +20,17 @@ echo "RestartSec=1" >> $SERVICE
 echo "[Install]" >> $SERVICE
 echo "WantedBy=multi-user.target" >> $SERVICE
 
-tar -czvf $TAR_NAME -X ./package_exclude ../nodered.service ../node-red/ ../Atlas/ ../install.sh ../install_for_dev.sh ../install_for_edibot.sh ../README.md
+cp ../nodered.service SmartNode/
+cp ../node-red/ SmartNode/
+cp ../Atlas/ SmartNode/
+cp ../install.sh SmartNode/
+cp ../install_for_dev.sh SmartNode/
+cp ../install_for_edibot.sh SmartNode/
+cp ../README.md SmartNode/
+
+tar -czvf $TAR_NAME  ./SmartNode
 
 chmod 755 ./smart_node_bitbake.tgz
 
-rm -rf $SERVICE
+rm -rf SmartNode/
 
