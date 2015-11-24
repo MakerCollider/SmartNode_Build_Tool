@@ -4,10 +4,10 @@ echo $TAR_NAME
 echo "make release package for edison image bitbake project ..."
 rm -rf $TAR_NAME
 
-TARDIR=./smartnode_1.0
+TARDIR=smartnode_1.0
 mkdir $TARDIR
 
-SERVICE=$TARDIR/nodered.service
+SERVICE=./$TARDIR/nodered.service
 rm -rf $SERVICE
 echo "[Unit]" > $SERVICE
 echo "Description=Node-RED" >> $SERVICE
@@ -21,17 +21,17 @@ echo "RestartSec=1" >> $SERVICE
 echo "[Install]" >> $SERVICE
 echo "WantedBy=multi-user.target" >> $SERVICE
 
-cp ../nodered.service $TARDIR
-cp -r ../node-red/ $TARDIR
-cp -r ../Atlas/ $TARDIR
-cp ../install.sh $TARDIR
-cp ../install_for_dev.sh $TARDIR
-cp ../install_for_edibot.sh $TARDIR
-cp ../README.md $TARDIR
+cp ../nodered.service ./$TARDIR
+cp -r ../node-red/ ./$TARDIR
+cp -r ../Atlas/ ./$TARDIR
+cp ../install.sh ./$TARDIR
+cp ../install_for_dev.sh ./$TARDIR
+cp ../install_for_edibot.sh ./$TARDIR
+cp ../README.md ./$TARDIR
 
-tar -czvf $TAR_NAME  $TARDIR
+tar -czvf $TAR_NAME  ./$TARDIR
 
 chmod 755 ./$TAR_NAME
 
-rm -rf $TARDIR
+rm -rf ./$TARDIR
 
