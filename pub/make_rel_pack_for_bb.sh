@@ -1,12 +1,13 @@
 #!/bin/sh
-TAR_NAME=smart_node_bitbake.tgz
+TAR_NAME=smartnode_1.0.tar.gz
 echo $TAR_NAME
 echo "make release package for edison image bitbake project ..."
 rm -rf $TAR_NAME
 
-mkdir SmartNode
+TARDIR=./smartnode_1.0
+mkdir $TARDIR
 
-SERVICE=./SmartNode/nodered.service
+SERVICE=$TARDIR/nodered.service
 rm -rf $SERVICE
 echo "[Unit]" > $SERVICE
 echo "Description=Node-RED" >> $SERVICE
@@ -14,23 +15,23 @@ echo "" >> $SERVICE
 echo "[Service]" >> $SERVICE
 echo "Type=simple" >> $SERVICE
 echo "Environment=\"NODE_PATH=/usr/lib/node_modules\"" >> $SERVICE
-echo "ExecStart=/usr/bin/node /home/root/SmartNode/node-red/red.js --userDir /home/root/SmartNode/node-red -v" >> $SERVICE
+echo "ExecStart=/usr/bin/node /home/root/$TARDIR/node-red/red.js --userDir /home/root/TARDIR/node-red -v" >> $SERVICE
 echo "Restart=always" >> $SERVICE
 echo "RestartSec=1" >> $SERVICE
 echo "[Install]" >> $SERVICE
 echo "WantedBy=multi-user.target" >> $SERVICE
 
-cp ../nodered.service SmartNode/
-cp -r ../node-red/ SmartNode/
-cp -r ../Atlas/ SmartNode/
-cp ../install.sh SmartNode/
-cp ../install_for_dev.sh SmartNode/
-cp ../install_for_edibot.sh SmartNode/
-cp ../README.md SmartNode/
+cp ../nodered.service $TARDIR
+cp -r ../node-red/ $TARDIR
+cp -r ../Atlas/ $TARDIR
+cp ../install.sh $TARDIR
+cp ../install_for_dev.sh $TARDIR
+cp ../install_for_edibot.sh $TARDIR
+cp ../README.md $TARDIR
 
-tar -czvf $TAR_NAME  ./SmartNode
+tar -czvf $TAR_NAME  $TARDIR
 
-chmod 755 ./smart_node_bitbake.tgz
+chmod 755 ./$TAR_NAME
 
-rm -rf SmartNode/
+rm -rf $TARDIR
 
