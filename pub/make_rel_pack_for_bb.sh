@@ -21,8 +21,8 @@ echo "[Install]" >> $SERVICE
 echo "WantedBy=multi-user.target" >> $SERVICE
 
 cp ../nodered.service SmartNode/
-cp ../node-red/ SmartNode/
-cp ../Atlas/ SmartNode/
+cp -r ../node-red/ SmartNode/
+cp -r ../Atlas/ SmartNode/
 cp ../install.sh SmartNode/
 cp ../install_for_dev.sh SmartNode/
 cp ../install_for_edibot.sh SmartNode/
