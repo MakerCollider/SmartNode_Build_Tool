@@ -9,7 +9,7 @@ TAR_NAME=smart_node.tgz
 echo $TAR_NAME
 echo "make release package..."
 rm -rf $TAR_NAME
-tar -czvf $TAR_NAME -X ./package_exclude ../node-red/ ../Atlas/ ../lib ../install.sh ../install_for_dev.sh ../install_for_edibot.sh ../README.md
+tar -czvf $TAR_NAME -X ./package_exclude ../node-red/ ../lib ../install.sh ../install_for_dev.sh ../install_for_edibot.sh ../README.md
 
 cat install_head.sh smart_node.tgz >smart_node.install.${VERSION}
 

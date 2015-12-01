@@ -23,7 +23,6 @@ echo "WantedBy=multi-user.target" >> $SERVICE
 
 cp ../nodered.service ./$TARDIR
 cp -r ../node-red/ ./$TARDIR
-cp -r ../Atlas/ ./$TARDIR
 cp ../install.sh ./$TARDIR
 cp ../install_for_dev.sh ./$TARDIR
 cp ../install_for_edibot.sh ./$TARDIR
