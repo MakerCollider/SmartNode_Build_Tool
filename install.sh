@@ -2,7 +2,7 @@ CURR=`pwd`
 LOG=$CURR/install.log
 
 echo "updating mraa..."
-opkg install $CURR/lib/mraa_0.8.1_i586.ipk
+opkg install $CURR/lib/mraa_0.9.0_i586.ipk
 echo "done"
 
 echo "updating upm..."
@@ -24,9 +24,9 @@ echo "install libv4l..."
 tar -xzvf $CURR/lib/libv4l.tgz >> $LOG
 echo "done"
 
-echo "hacking upm-diy library..."
-tar -xzvf $CURR/lib/upm-diy.tgz >> $LOG
-echo "done"
+#echo "hacking upm-diy library..."
+#tar -xzvf $CURR/lib/upm-diy.tgz >> $LOG
+#echo "done"
 
 echo "install mqtt package..."
 opkg install $CURR/lib/mqtt_1.4/*.ipk
