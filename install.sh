@@ -24,13 +24,13 @@ echo "install libv4l..."
 tar -xzvf $CURR/lib/libv4l.tgz >> $LOG
 echo "done"
 
-#echo "hacking mraa-diy library..."
-#tar -xzvf $CURR/lib/mraa-diy.tgz >> $LOG
-#echo "done"
+echo "hacking mraa-diy library..."
+tar -xzvf $CURR/lib/mraa-diy.tgz >> $LOG
+echo "done"
 
-#echo "hacking upm-diy library..."
-#tar -xzvf $CURR/lib/upm-diy.tgz >> $LOG
-#echo "done"
+echo "hacking upm-diy library..."
+tar -xzvf $CURR/lib/upm-diy.tgz >> $LOG
+echo "done"
 
 echo "run board auto detect tools"
 cd $CURR/edison_tools
