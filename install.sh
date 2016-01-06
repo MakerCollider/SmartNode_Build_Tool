@@ -33,7 +33,7 @@ echo "done"
 #echo "done"
 
 echo "run board auto detect tools"
-cd ./edison_tools
+cd $CURR/edison_tools
 ./install_edisontools.sh
 cd ../
 echo "done"
@@ -87,15 +87,3 @@ echo "Start Smart Node Service"
 systemctl restart nodered > /dev/null 2>&1
 
 echo "log saved to $LOG"
-echo "The System will reboot in 5 seconds ..."
-sleep 1
-echo "The System will reboot in 4 seconds ..."
-sleep 1
-echo "The System will reboot in 3 seconds ..."
-sleep 1
-echo "The System will reboot in 2 seconds ..."
-sleep 1
-echo "The System will reboot in 1 seconds ..."
-sleep 1
-echo "Reboot ..."
-reboot
