@@ -24,9 +24,18 @@ echo "install libv4l..."
 tar -xzvf $CURR/lib/libv4l.tgz >> $LOG
 echo "done"
 
+#echo "hacking mraa-diy library..."
+#tar -xzvf $CURR/lib/mraa-diy.tgz >> $LOG
+#echo "done"
+
 #echo "hacking upm-diy library..."
 #tar -xzvf $CURR/lib/upm-diy.tgz >> $LOG
 #echo "done"
+
+echo "run board auto detect tools"
+cd ./edison_tools
+./install_edisontools.sh
+echo "done"
 
 echo "install mqtt package..."
 opkg install $CURR/lib/mqtt_1.4/*.ipk
@@ -77,3 +86,15 @@ echo "Start Smart Node Service"
 systemctl restart nodered > /dev/null 2>&1
 
 echo "log saved to $LOG"
+echo "The System will reboot in 5 seconds ..."
+sleep 1
+echo "The System will reboot in 4 seconds ..."
+sleep 1
+echo "The System will reboot in 3 seconds ..."
+sleep 1
+echo "The System will reboot in 2 seconds ..."
+sleep 1
+echo "The System will reboot in 1 seconds ..."
+sleep 1
+echo "Reboot ..."
+reboot
