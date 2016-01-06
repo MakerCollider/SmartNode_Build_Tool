@@ -35,6 +35,7 @@ echo "done"
 echo "run board auto detect tools"
 cd ./edison_tools
 ./install_edisontools.sh
+cd ../
 echo "done"
 
 echo "install mqtt package..."
