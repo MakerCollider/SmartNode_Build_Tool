@@ -26,6 +26,7 @@ echo "done"
 
 echo "hacking mraa-diy library..."
 tar -xzvf $CURR/lib/mraa-diy.tgz >> $LOG
+cp -r /usr/lib/node_modules/mraa/mraa.node $CURR/node-red/node_modules/mraa/build/Release/
 echo "done"
 
 echo "hacking upm-diy library..."
