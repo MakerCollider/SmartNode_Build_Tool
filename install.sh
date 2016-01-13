@@ -16,6 +16,14 @@ echo "install libuv..."
 tar -xzvf $CURR/lib/libuv.bin.tgz >> $LOG
 echo "done"
 
+echo "install sox..."
+tar -xzvf $CURR/lib/sox.tar.gz >> $LOG
+echo "done"
+
+echo "install mpg123..."
+tar -xzvf $CURR/lib/mpg123.tar.gz >> $LOG
+echo "done"
+
 echo "install opencv..."
 tar -xzvf $CURR/lib/OpenCV-3.0.0-rc1.tgz >> $LOG
 echo "done"
@@ -56,7 +64,7 @@ cd /opt/festival/festival/bin
 cp festival /usr/bin
 echo "done"
 
-echo "import asound.conf..."                         
+echo "import asound.conf..."
 echo "pcm.!default sysdefault:Device" > /etc/asound.conf
 echo "done"
 
@@ -83,8 +91,8 @@ sleep 2
 echo "Enable Smart Node Service"
 systemctl enable nodered 
 
-sleep 2                                                                                     
-echo "Start Smart Node Service"                                                             
+sleep 2
+echo "Start Smart Node Service"
 systemctl restart nodered > /dev/null 2>&1
 
 echo "log saved to $LOG"
