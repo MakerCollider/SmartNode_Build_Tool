@@ -65,7 +65,9 @@ cp festival /usr/bin
 echo "done"
 
 echo "import asound.conf..."
-echo "pcm.!default sysdefault:Device" > /etc/asound.conf
+cp $CURR/configure/asound.conf /etc/
+cp $CURR/configure/asound.state /var/lib/alsa/
+alsactl restore
 echo "done"
 
 cd $CURR
