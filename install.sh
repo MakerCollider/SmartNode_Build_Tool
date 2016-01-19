@@ -68,7 +68,9 @@ echo "## 12   ## Hacking upm-diy library"
 tar -xzvf $CURR/lib/upm-diy.tgz -C /usr >> $LOG
 
 echo "## 13   ## Run board auto detect tools"
-./$CURR/edison_tools/install_edisontools.sh
+cd $CURR/edison_tools
+./install_edisontools.sh
+cd $CURR
 
 echo "## 14   ## Install mqtt package"
 opkg install $CURR/lib/mqtt_1.4/*.ipk
