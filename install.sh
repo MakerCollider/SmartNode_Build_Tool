@@ -49,8 +49,8 @@ opkg install $CURR/lib/libv4l/libv4l-dbg_1.0.1-r0.0_core2-32.ipk
 
 echo "## 8    ## Install opencv"
 opkg install $CURR/lib/OpenCV/opencv_3.0-r0_core2-32.ipk
-opkg install $CURR/lib/OpenCV/opencv-dev_3.0-r0_core2-32.ipk
 opkg install $CURR/lib/OpenCV/opencv-link_3.0-r0_core2-32.ipk
+opkg install $CURR/lib/OpenCV/opencv-dev_3.0-r0_core2-32.ipk
 opkg install $CURR/lib/OpenCV/opencv-dbg_3.0-r0_core2-32.ipk
 opkg install $CURR/lib/OpenCV/opencv-staticdev_3.0-r0_core2-32.ipk
 
