@@ -1,94 +1,86 @@
+cat << "EOF"
+
+            __  __       _                ____      _ _ _     _
+           |  \/  | __ _| | _____ _ __   / ___|___ | | (_) __| | ___ _ __
+           | |\/| |/ _` | |/ / _ \ '__| | |   / _ \| | | |/ _` |/ _ \ '__|
+           | |  | | (_| |   <  __/ |    | |__| (_) | | | | (_| |  __/ |
+           |_|  |_|\__,_|_|\_\___|_|     \____\___/|_|_|_|\__,_|\___|_|
+
+
+EOF
+
 CURR=`pwd`
 LOG=$CURR/install.log
 
-echo "import configure..."
+echo "## 1    ## Import configure"
 cp $CURR/configure/asound.conf /etc/
 cp $CURR/configure/asound.state /var/lib/alsa/
 cp $CURR/configure/timesyncd.conf /etc/systemd/
 
+echo "## 1.1  ## Apply configure"
 alsactl restore
 timedatectl set-timezone Asia/Hong_Kong
-echo "done"
 
-echo "updating mraa..."
+echo "## 2    ## Update mraa"
 opkg install $CURR/lib/mraa_0.9.0_i586.ipk
 echo "done"
 
-echo "updating upm..."
+echo "## 3    ## Update upm"
 opkg install $CURR/lib/upm_0.4.1_i586.ipk
 echo "done"
 
-echo "install git..."
+echo "## 4    ## Install git"
 opkg install $CURR/lib/git_2.5.0-r0_core2-32.ipk
 
-echo "install libc6..."
+echo "## 5    ## Install libc6"
 opkg install $CURR/lib/libc6/libc6_2.20-r0.0_core2-32.ipk
 opkg install $CURR/lib/libc6/libc6-dev_2.20-r0.0_core2-32.ipk
 opkg install $CURR/lib/libc6/libc6-dbg_2.20-r0.0_core2-32.ipk
 
-echo "install libjpeg..."
+echo "## 6    ## Install libjpeg"
 opkg install $CURR/lib/libjpeg/libjpeg8_8d+1.3.1-r0.0_core2-32.ipk
 opkg install $CURR/lib/libjpeg/libjpeg-dev_8d+1.3.1-r0.0_core2-32.ipk
 opkg install $CURR/lib/libjpeg/libjpeg-dbg_8d+1.3.1-r0.0_core2-32.ipk
 
-echo "install libv4l..."
+echo "## 7    ## Install libv4l"
 opkg install $CURR/lib/libv4l/libv4l_1.0.1-r0.0_core2-32.ipk
 opkg install $CURR/lib/libv4l/libv4l-dev_1.0.1-r0.0_core2-32.ipk
 opkg install $CURR/lib/libv4l/libv4l-dbg_1.0.1-r0.0_core2-32.ipk
 
-echo "install opencv..."
+echo "## 8    ## Install opencv"
 opkg install $CURR/lib/OpenCV/opencv_3.0-r0_core2-32.ipk
 opkg install $CURR/lib/OpenCV/opencv-dev_3.0-r0_core2-32.ipk
 opkg install $CURR/lib/OpenCV/opencv-link_3.0-r0_core2-32.ipk
 opkg install $CURR/lib/OpenCV/opencv-dbg_3.0-r0_core2-32.ipk
 opkg install $CURR/lib/OpenCV/opencv-staticdev_3.0-r0_core2-32.ipk
 
-echo "done"
+echo "## 9    ## Install sox"
+tar -xzvf $CURR/lib/sox.tar.gz /usr >> $LOG
 
-echo "cd /usr"
-cd /usr
+echo "## 10   ## Install mpg123"
+tar -xzvf $CURR/lib/mpg123.tar.gz /usr >> $LOG
 
-echo "install sox..."
-tar -xzvf $CURR/lib/sox.tar.gz >> $LOG
-echo "done"
-
-echo "install mpg123..."
-tar -xzvf $CURR/lib/mpg123.tar.gz >> $LOG
-echo "done"
-
-echo "hacking mraa-diy library..."
-tar -xzvf $CURR/lib/mraa-diy.tgz >> $LOG
+echo "## 11   ## Hacking mraa-diy library"
+tar -xzvf $CURR/lib/mraa-diy.tgz /usr >> $LOG
 cp -r /usr/lib/node_modules/mraa/mraa.node $CURR/node-red/node_modules/mraa/build/Release/
-echo "done"
 
-echo "hacking upm-diy library..."
-tar -xzvf $CURR/lib/upm-diy.tgz >> $LOG
-echo "done"
+echo "## 12   ## Hacking upm-diy library"
+tar -xzvf $CURR/lib/upm-diy.tgz /usr >> $LOG
 
-echo "run board auto detect tools"
-cd $CURR/edison_tools
-./install_edisontools.sh
-cd ../
-echo "done"
+echo "## 13   ## Run board auto detect tools"
+./$CURR/edison_tools/install_edisontools.sh
 
-echo "install mqtt package..."
+echo "## 14   ## Install mqtt package"
 opkg install $CURR/lib/mqtt_1.4/*.ipk
-echo "done"
 
-echo "config mqtt..."
+echo "## 14.1 ## Config mqtt"
 cp $CURR/lib/mqtt_1.4/mosquitto.conf /etc/mosquitto/
-echo "done"
 
-echo "cd /opt"
-cd /opt
+echo "## 15   ## Install festival"
+tar -xzvf $CURR/lib/festival_prebuild.tar.gz /opt >> $LOG
+cp /opt/festival/festival/bin/festival /usr/bin
 
-echo "install festival..."
-tar -xzvf $CURR/lib/festival_prebuild.tar.gz >> $LOG
-cd /opt/festival/festival/bin
-cp festival /usr/bin
-echo "done"
-
-cd $CURR
+echo "## 16   ## Set smartnode service"
 SERVICE=/etc/systemd/system/nodered.service
 rm -rf $SERVICE
 echo "[Unit]" > $SERVICE
@@ -103,16 +95,12 @@ echo "RestartSec=1" >> $SERVICE
 echo "[Install]" >> $SERVICE
 echo "WantedBy=multi-user.target" >> $SERVICE
 
-sleep 2
-echo "Disable Smart Node Service"
+echo "## 16.1 ## Start smartnode service"
+sleep 1
 systemctl disable nodered
-
-sleep 2
-echo "Enable Smart Node Service"
+sleep 1
 systemctl enable nodered 
-
-sleep 2
-echo "Start Smart Node Service"
+sleep 1
 systemctl restart nodered > /dev/null 2>&1
 
-echo "log saved to $LOG"
+echo "## 17   ## All finish, log saved to $LOG"
