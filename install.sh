@@ -55,17 +55,17 @@ opkg install $CURR/lib/OpenCV/opencv-dbg_3.0-r0_core2-32.ipk
 opkg install $CURR/lib/OpenCV/opencv-staticdev_3.0-r0_core2-32.ipk
 
 echo "## 9    ## Install sox"
-tar -xzvf $CURR/lib/sox.tar.gz /usr >> $LOG
+tar -xzvf $CURR/lib/sox.tar.gz -C /usr >> $LOG
 
 echo "## 10   ## Install mpg123"
-tar -xzvf $CURR/lib/mpg123.tar.gz /usr >> $LOG
+tar -xzvf $CURR/lib/mpg123.tar.gz -C /usr >> $LOG
 
 echo "## 11   ## Hacking mraa-diy library"
-tar -xzvf $CURR/lib/mraa-diy.tgz /usr >> $LOG
+tar -xzvf $CURR/lib/mraa-diy.tgz -C /usr >> $LOG
 cp -r /usr/lib/node_modules/mraa/mraa.node $CURR/node-red/node_modules/mraa/build/Release/
 
 echo "## 12   ## Hacking upm-diy library"
-tar -xzvf $CURR/lib/upm-diy.tgz /usr >> $LOG
+tar -xzvf $CURR/lib/upm-diy.tgz -C /usr >> $LOG
 
 echo "## 13   ## Run board auto detect tools"
 ./$CURR/edison_tools/install_edisontools.sh
@@ -77,7 +77,7 @@ echo "## 14.1 ## Config mqtt"
 cp $CURR/lib/mqtt_1.4/mosquitto.conf /etc/mosquitto/
 
 echo "## 15   ## Install festival"
-tar -xzvf $CURR/lib/festival_prebuild.tar.gz /opt >> $LOG
+tar -xzvf $CURR/lib/festival_prebuild.tar.gz -C /opt >> $LOG
 cp /opt/festival/festival/bin/festival /usr/bin
 
 echo "## 16   ## Set smartnode service"
