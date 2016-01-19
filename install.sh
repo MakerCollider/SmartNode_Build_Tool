@@ -1,6 +1,15 @@
 CURR=`pwd`
 LOG=$CURR/install.log
 
+echo "import configure..."
+cp $CURR/configure/asound.conf /etc/
+cp $CURR/configure/asound.state /var/lib/alsa/
+cp $CURR/configure/timesyncd.conf /etc/systemd/
+
+alsactl restore
+timedatectl set-timezone Asia/Hong_Kong
+echo "done"
+
 echo "updating mraa..."
 opkg install $CURR/lib/mraa_0.9.0_i586.ipk
 echo "done"
@@ -9,12 +18,19 @@ echo "updating upm..."
 opkg install $CURR/lib/upm_0.4.1_i586.ipk
 echo "done"
 
+echo "install git"
+opkg install $CURR/lib/git_2.5.0-r0_core2-32.ipk
+
+echo "install opencv..."
+opkg install $CURR/lib/OpenCV/opencv_3.0-r0_core2-32.ipk >> $LOG
+opkg install $CURR/lib/OpenCV/opencv-dev_3.0-r0_core2-32.ipk >> $LOG
+opkg install $CURR/lib/OpenCV/opencv-dbg_3.0-r0_core2-32.ipk >> $LOG
+opkg install $CURR/lib/OpenCV/opencv-staticdev_3.0-r0_core2-32.ipk >> $LOG
+opkg install $CURR/lib/OpenCV/opencv-link_3.0-r0_core2-32.ipk >> $LOG
+echo "done"
+
 echo "cd /usr"
 cd /usr
-
-echo "install libuv..."
-tar -xzvf $CURR/lib/libuv.bin.tgz >> $LOG
-echo "done"
 
 echo "install sox..."
 tar -xzvf $CURR/lib/sox.tar.gz >> $LOG
@@ -22,14 +38,6 @@ echo "done"
 
 echo "install mpg123..."
 tar -xzvf $CURR/lib/mpg123.tar.gz >> $LOG
-echo "done"
-
-echo "install opencv..."
-tar -xzvf $CURR/lib/OpenCV-3.0.0-rc1.tgz >> $LOG
-echo "done"
-
-echo "install libv4l..."
-tar -xzvf $CURR/lib/libv4l.tgz >> $LOG
 echo "done"
 
 echo "hacking mraa-diy library..."
@@ -62,12 +70,6 @@ echo "install festival..."
 tar -xzvf $CURR/lib/festival_prebuild.tar.gz >> $LOG
 cd /opt/festival/festival/bin
 cp festival /usr/bin
-echo "done"
-
-echo "import asound.conf..."
-cp $CURR/configure/asound.conf /etc/
-cp $CURR/configure/asound.state /var/lib/alsa/
-alsactl restore
 echo "done"
 
 cd $CURR
