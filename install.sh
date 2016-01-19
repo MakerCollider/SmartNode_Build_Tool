@@ -18,15 +18,31 @@ echo "updating upm..."
 opkg install $CURR/lib/upm_0.4.1_i586.ipk
 echo "done"
 
-echo "install git"
+echo "install git..."
 opkg install $CURR/lib/git_2.5.0-r0_core2-32.ipk
 
+echo "install libc6..."
+opkg install $CURR/lib/libc6/libc6_2.20-r0.0_core2-32.ipk
+opkg install $CURR/lib/libc6/libc6-dev_2.20-r0.0_core2-32.ipk
+opkg install $CURR/lib/libc6/libc6-dbg_2.20-r0.0_core2-32.ipk
+
+echo "install libjpeg..."
+opkg install $CURR/lib/libjpeg/libjpeg8_8d+1.3.1-r0.0_core2-32.ipk
+opkg install $CURR/lib/libjpeg/libjpeg-dev_8d+1.3.1-r0.0_core2-32.ipk
+opkg install $CURR/lib/libjpeg/libjpeg-dbg_8d+1.3.1-r0.0_core2-32.ipk
+
+echo "install libv4l..."
+opkg install $CURR/lib/libv4l/libv4l_1.0.1-r0.0_core2-32.ipk
+opkg install $CURR/lib/libv4l/libv4l-dev_1.0.1-r0.0_core2-32.ipk
+opkg install $CURR/lib/libv4l/libv4l-dbg_1.0.1-r0.0_core2-32.ipk
+
 echo "install opencv..."
-opkg install $CURR/lib/OpenCV/opencv_3.0-r0_core2-32.ipk >> $LOG
-opkg install $CURR/lib/OpenCV/opencv-dev_3.0-r0_core2-32.ipk >> $LOG
-opkg install $CURR/lib/OpenCV/opencv-dbg_3.0-r0_core2-32.ipk >> $LOG
-opkg install $CURR/lib/OpenCV/opencv-staticdev_3.0-r0_core2-32.ipk >> $LOG
-opkg install $CURR/lib/OpenCV/opencv-link_3.0-r0_core2-32.ipk >> $LOG
+opkg install $CURR/lib/OpenCV/opencv_3.0-r0_core2-32.ipk
+opkg install $CURR/lib/OpenCV/opencv-dev_3.0-r0_core2-32.ipk
+opkg install $CURR/lib/OpenCV/opencv-link_3.0-r0_core2-32.ipk
+opkg install $CURR/lib/OpenCV/opencv-dbg_3.0-r0_core2-32.ipk
+opkg install $CURR/lib/OpenCV/opencv-staticdev_3.0-r0_core2-32.ipk
+
 echo "done"
 
 echo "cd /usr"
