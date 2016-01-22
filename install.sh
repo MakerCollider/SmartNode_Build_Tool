@@ -36,11 +36,11 @@ echo "## 5    ## Install opencv"
 #opkg install $CURR/lib/libc6/libc6_2.20-r0.0_core2-32.ipk
 #opkg install $CURR/lib/libc6/libc6-dev_2.20-r0.0_core2-32.ipk
 #opkg install $CURR/lib/libc6/libc6-dbg_2.20-r0.0_core2-32.ipk
-opkg install $CURR/lib/libjpeg/libjpeg8_8d+1.3.1-r0.0_core2-32.ipk
+opkg install $CURR/lib/libjpeg8_8d+1.3.1-r0.0_core2-32.ipk
 #opkg install $CURR/lib/libjpeg/libjpeg-dev_8d+1.3.1-r0.0_core2-32.ipk
 #opkg install $CURR/lib/libjpeg/libjpeg-dbg_8d+1.3.1-r0.0_core2-32.ipk
-opkg install $CURR/lib/libv4l/libv4l_1.0.1-r0.0_core2-32.ipk
-opkg install $CURR/lib/libv4l/libv4l-dev_1.0.1-r0.0_core2-32.ipk
+opkg install $CURR/lib/libv4l_1.0.1-r0.0_core2-32.ipk
+opkg install $CURR/lib/libv4l-dev_1.0.1-r0.0_core2-32.ipk
 #opkg install $CURR/lib/libv4l/libv4l-dbg_1.0.1-r0.0_core2-32.ipk
 opkg install $CURR/lib/OpenCV/opencv_3.0-r0_core2-32.ipk
 opkg install $CURR/lib/OpenCV/opencv-link_3.0-r0_core2-32.ipk
@@ -108,4 +108,10 @@ systemctl enable nodered
 sleep 1
 systemctl restart nodered > /dev/null 2>&1
 
-echo "## 14   ## All finish, log saved to $LOG"
+echo "## 14   ## Add showip service"
+mkdir /etc/init.d
+cp $CURR/lib/showip /etc/init.d
+update-rc.d -f showip remove
+update-rc.d showip defaults 91
+
+echo "## 15   ## All finish, log saved to $LOG"
