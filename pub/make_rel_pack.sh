@@ -11,8 +11,8 @@ echo "make release package..."
 rm -rf $TAR_NAME
 tar -czvf $TAR_NAME -X ./package_exclude ../node-red/ ../lib ../configure ../install.sh ../edison_tools ../README.md
 
-cat install_head.sh smart_node.tgz >smart_node.install.${VERSION}
+cat install_head.sh smart_node.tgz > SmartNode-${VERSION}.install
 
-chmod 755 ./smart_node.install.${VERSION}
+chmod 755 SmartNode-${VERSION}.install
 
 rm ./smart_node.tgz
