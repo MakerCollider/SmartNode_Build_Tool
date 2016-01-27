@@ -111,6 +111,7 @@ systemctl restart nodered > /dev/null 2>&1
 echo "## 14   ## Add showip service"
 mkdir /etc/init.d
 cp $CURR/lib/showip /etc/init.d
+chmod 755 /etc/init.d/showip
 update-rc.d -f showip remove
 update-rc.d showip defaults 91
 
