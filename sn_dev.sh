@@ -13,10 +13,10 @@ EOF
 
 CMD=`pwd`
 NODE_PATH="node-red/node_modules"
-SMART_GIT="https://github.com/MakerCollider/node-red-contrib-smartnode-hook.git"
+SMART_GIT="https://github.com/MakerCollider/node-red-contrib-smartnode.git"
 HOOK_GIT="https://github.com/MakerCollider/node-red-contrib-smartnode-hook.git"
-SEEED_GIT="https://github.com/MakerCollider/node-red-contrib-smartnode-hook.git"
-DFROBOT_GIT="https://github.com/MakerCollider/node-red-contrib-smartnode-hook.git"
+SEEED_GIT="https://github.com/MakerCollider/node-red-contrib-smartnode-seeed.git"
+DFROBOT_GIT="https://github.com/MakerCollider/node-red-contrib-smartnode-dfrobot.git"
 
 echo "## 1    ## Stop node-red service"
 systemctl stop nodered
