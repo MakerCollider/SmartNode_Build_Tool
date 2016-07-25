@@ -27,18 +27,18 @@ echo "## 4    ## Install git(disabled)"
 
 echo "## 5    ## Install opencv"
 mkdir -p /usr/local
-opkg install $CURR/lib/opencv/libpng16-16_1.6.13-r0_core2-32.ipk
+#opkg install $CURR/lib/opencv/libpng16-16_1.6.13-r0_core2-32.ipk
 opkg install $CURR/lib/opencv/libpng16-dev_1.6.13-r0_core2-32.ipk
-opkg install $CURR/lib/opencv/libgif-dev_4.1.6-r3_core2-32.ipk
 opkg install $CURR/lib/opencv/libgif4_4.1.6-r3_core2-32.ipk
-opkg install $CURR/lib/opencv/libtiff-dev_4.0.3-r0_core2-32.ipk
+opkg install $CURR/lib/opencv/libgif-dev_4.1.6-r3_core2-32.ipk
 opkg install $CURR/lib/opencv/libtiff5_4.0.3-r0_core2-32.ipk
-opkg install $CURR/lib/opencv/libv4l-dev_1.0.1-r0_core2-32.ipk
+opkg install $CURR/lib/opencv/libtiff-dev_4.0.3-r0_core2-32.ipk
 opkg install $CURR/lib/opencv/libv4l_1.0.1-r0_core2-32.ipk
-opkg install $CURR/lib/opencv/libwebp-dev_0.4.0-r0_core2-32.ipk
+opkg install $CURR/lib/opencv/libv4l-dev_1.0.1-r0_core2-32.ipk
 opkg install $CURR/lib/opencv/libwebp_0.4.0-r0_core2-32.ipk
-opkg install $CURR/lib/opencv/v4l-utils-dev_1.0.1-r0_core2-32.ipk
+opkg install $CURR/lib/opencv/libwebp-dev_0.4.0-r0_core2-32.ipk
 opkg install $CURR/lib/opencv/v4l-utils_1.0.1-r0_core2-32.ipk
+opkg install $CURR/lib/opencv/v4l-utils-dev_1.0.1-r0_core2-32.ipk
 sh $CURR/lib/opencv/OpenCV-3.1.0-887-g0015a09-i686.sh --prefix=/usr/local --exclude-subdir
 
 echo "## 6    ## Install sox"
@@ -48,7 +48,7 @@ opkg install $CURR/lib/sox/libtheora_1.1.1-r1_core2-32.ipk
 opkg install $CURR/lib/sox/libavutil51_0.8.15-r0_core2-32.ipk
 opkg install $CURR/lib/sox/libavcodec53_0.8.15-r0_core2-32.ipk
 opkg install $CURR/lib/sox/libavformat53_0.8.15-r0_core2-32.ipk
-opkg install $CURR/lib/sox/libpng16-16_1.6.13-r0_core2-32.ipk
+#opkg install $CURR/lib/sox/libpng16-16_1.6.13-r0_core2-32.ipk
 opkg install $CURR/lib/sox/sox_14.4.0-r1_core2-32.ipk
 
 echo "## 7    ## Install mpg123"
