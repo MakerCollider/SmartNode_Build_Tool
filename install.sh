@@ -39,7 +39,7 @@ opkg install $CURR/lib/opencv/libwebp_0.4.0-r0_core2-32.ipk
 opkg install $CURR/lib/opencv/libwebp-dev_0.4.0-r0_core2-32.ipk
 opkg install $CURR/lib/opencv/v4l-utils_1.0.1-r0_core2-32.ipk
 opkg install $CURR/lib/opencv/v4l-utils-dev_1.0.1-r0_core2-32.ipk
-sh $CURR/lib/opencv/OpenCV-3.1.0-887-g0015a09-i686.sh --prefix=/usr/local --exclude-subdir
+sh $CURR/lib/opencv/OpenCV-3.1.0-1017-g52444bf-i686.sh --prefix=/usr/local --exclude-subdir
 
 echo "## 6    ## Install sox"
 #tar -xzvf $CURR/lib/sox.tar.gz -C /usr >> $LOG
