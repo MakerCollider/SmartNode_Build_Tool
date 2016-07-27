@@ -16,11 +16,9 @@ systemctl restart mosquitto
 
 echo "## 2    ## Update mraa(disabled)"
 #opkg install $CURR/lib/mraa_0.9.0_i586.ipk
-echo "done"
 
 echo "## 3    ## Update upm(disabled)"
 #opkg install $CURR/lib/upm_0.4.1_i586.ipk
-echo "done"
 
 echo "## 4    ## Install git(disabled)"
 #opkg install $CURR/lib/git_2.5.0-r0_core2-32.ipk
