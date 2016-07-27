@@ -24,7 +24,6 @@ echo "## 4    ## Install git(disabled)"
 #opkg install $CURR/lib/git_2.5.0-r0_core2-32.ipk
 
 echo "## 5    ## Install opencv"
-mkdir -p /usr/local
 #opkg install $CURR/lib/opencv/libpng16-16_1.6.13-r0_core2-32.ipk
 opkg install $CURR/lib/opencv/libpng16-dev_1.6.13-r0_core2-32.ipk
 opkg install $CURR/lib/opencv/libgif4_4.1.6-r3_core2-32.ipk
@@ -37,7 +36,7 @@ opkg install $CURR/lib/opencv/libwebp_0.4.0-r0_core2-32.ipk
 opkg install $CURR/lib/opencv/libwebp-dev_0.4.0-r0_core2-32.ipk
 opkg install $CURR/lib/opencv/v4l-utils_1.0.1-r0_core2-32.ipk
 opkg install $CURR/lib/opencv/v4l-utils-dev_1.0.1-r0_core2-32.ipk
-sh $CURR/lib/opencv/OpenCV-3.1.0-1017-g52444bf-i686.sh --prefix=/usr/local --exclude-subdir
+sh $CURR/lib/opencv/OpenCV-3.1.0-1017-g52444bf-i686.sh --prefix=/usr --exclude-subdir
 
 echo "## 6    ## Install sox"
 #tar -xzvf $CURR/lib/sox.tar.gz -C /usr >> $LOG
