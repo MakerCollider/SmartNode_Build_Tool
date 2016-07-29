@@ -77,8 +77,8 @@ echo "## 12.1 ## Config mqtt(disabled, move to stage 1.1)"
 #cp $CURR/lib/mqtt_1.4/mosquitto.conf /etc/mosquitto/
 
 echo "## 13   ## Add showip service"
-mkdir /etc/init.d
-cp $CURR/lib/showip /etc/init.d
+mkdir -p /etc/init.d
+cp $CURR/lib/showip/showip /etc/init.d
 chmod 755 /etc/init.d/showip
 update-rc.d -f showip remove
 update-rc.d showip defaults 91
