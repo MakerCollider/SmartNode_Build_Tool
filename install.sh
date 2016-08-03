@@ -3,7 +3,9 @@
 CURR=`pwd`
 LOG=$CURR/install.log
 
-echo "## 1    ## Import configure(disabled)"
+echo "## 1    ## Import configure"
+ASOUND=/etc/asound.conf
+echo "defaults.pcm.card 2" > $ASOUND
 #cp $CURR/configure/asound.conf /etc/
 #cp $CURR/configure/asound.state /var/lib/alsa/
 #cp $CURR/configure/timesyncd.conf /etc/systemd/
