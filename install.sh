@@ -3,16 +3,17 @@
 CURR=`pwd`
 LOG=$CURR/install.log
 
-echo "## 1    ## Import configure"
-cp $CURR/configure/asound.conf /etc/
-cp $CURR/configure/asound.state /var/lib/alsa/
+echo "## 1    ## Import configure(disabled)"
+#cp $CURR/configure/asound.conf /etc/
+#cp $CURR/configure/asound.state /var/lib/alsa/
 #cp $CURR/configure/timesyncd.conf /etc/systemd/
-cp $CURR/configure/mosquitto.conf /etc/mosquitto/
+#cp $CURR/configure/mosquitto.conf /etc/mosquitto/
 
-echo "## 1.1  ## Apply configure"
-alsactl restore
-timedatectl set-timezone Asia/Hong_Kong
-systemctl restart mosquitto
+echo "## 1.1  ## Apply configure(disabled)"
+#amixer -c 2 set Speaker 100%
+#alsactl store
+#timedatectl set-timezone Asia/Hong_Kong
+#systemctl restart mosquitto
 
 echo "## 2    ## Update mraa(disabled)"
 #opkg install $CURR/lib/mraa_0.9.0_i586.ipk

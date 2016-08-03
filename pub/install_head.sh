@@ -18,7 +18,7 @@ LOG=$CURR/install.log
 echo "## 0    ## Extract package"
 line=`wc -l $0|awk '{print $1}'`
 line=`expr $line - 27` 
-rm -rf node-red/ lib/ configure/ edison_tools/ README.md install.sh sn_dev.sh
+rm -rf node-red/ lib/ edison_tools/ README.md install.sh sn_dev.sh #configure/
 tail -n $line $0 |tar xzv >> $LOG
 ./install.sh
 ret=$?
